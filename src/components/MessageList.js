@@ -1,9 +1,11 @@
 import React from 'react'
 import Message from './Message.js'
 
-let MessageList = (props) => {
+const MessageList = (props) => {
     return(
-        <Message />
+        props.messages.map(message => {
+            return <Message />
+        })
     )
 }
 
