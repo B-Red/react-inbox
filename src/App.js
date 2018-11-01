@@ -11,6 +11,19 @@ class App extends Component {
       messages: [1, 2, 3]
     }
   }
+
+  componentDidMount(){
+    fetch("http://localhost:8082/api/messages")
+      .then(function(response) {
+      return response.json();
+  })
+      .then(myJson => {
+        this.setState({
+        messages: myJson
+      });
+  });
+  }
+
   render() {
     return (
       <div className='App'>
