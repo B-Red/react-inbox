@@ -12,16 +12,12 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
-    fetch("http://localhost:8082/api/messages")
-      .then(function(response) {
-      return response.json();
-  })
-      .then(myJson => {
-        this.setState({
-        messages: myJson
-      });
-  });
+  async componentDidMount(){
+    let response = await fetch("http://localhost:8082/api/messages")
+    let myJson = await response.json()
+    this.setState({
+      messages: myJson
+    })
   }
 
   render() {
