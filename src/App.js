@@ -20,6 +20,18 @@ class App extends Component {
     })
   }
 
+  messageSelected = (id) => {
+    const updatedMessages = this.state.messages.map(message => {
+      if(message.id === id){
+        message.selcted = !message.selected
+      }
+      return message
+    })
+    this.setState({
+      messages: updatedMessages
+    })
+  }
+
   markAsReadButtonClicked = () => {
     console.log('readbuttonclicked')
   }
@@ -31,7 +43,7 @@ class App extends Component {
       command: "read",
       "read": true
     }
-    const result = await fetch('http://localhost:8082/api/messages', {
+    await fetch('http://localhost:8082/api/messages', {
       method: 'PATCH',
       body: JSON.stringify(message),
       headers: {
@@ -54,7 +66,7 @@ class App extends Component {
     return (
       <div className='App'>
       <Toolbar readClicked={this.markAsReadButtonClicked}  />
-      <MessageList messages={this.state.messages} messageRead={this.messageRead}/>
+      <MessageList messageSelected={this.messageSelected} messages={this.state.messages} messageRead={this.messageRead}/>
 
       </div>
     );
