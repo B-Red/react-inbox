@@ -2,7 +2,7 @@ import React from 'react'
 
 let Message = (props) => {
     return(
-        <div className={props.message.read ? "row message read" : "row message unread"} onClick={() => props.messageRead(props.message.id)}>
+        <div className={props.message.read ? "row message read" : "row message unread"} >
             <div class="col-xs-1">
                 <div class="row">
                     <div class="col-xs-2">
@@ -13,7 +13,7 @@ let Message = (props) => {
                     </div>
                 </div>
             </div>
-            <div class="col-xs-11">
+            <div class="col-xs-11" onClick={() => props.messageRead(props.message.id)}>
                 <a href="#">
                 {props.message.subject}
                 </a>
