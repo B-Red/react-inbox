@@ -21,9 +21,11 @@ class App extends Component {
   }
 
   messageSelected = (id) => {
+    console.log(id)
+
     const updatedMessages = this.state.messages.map(message => {
       if(message.id === id){
-        message.selcted = !message.selected
+        message.selected = !message.selected
       }
       return message
     })
@@ -34,6 +36,10 @@ class App extends Component {
 
   markAsReadButtonClicked = () => {
     console.log('readbuttonclicked')
+    // TODO: for each message selected make it "read
+    const selectedMessages = this.state.messages.filter(message => message.selected === true)
+    console.log("message selected", selectedMessages)
+    selectedMessages.forEach(message => this.messageRead(message.id))
   }
 
   messageRead = async (id) => {
@@ -53,7 +59,7 @@ class App extends Component {
     })
     const updatedMessages = this.state.messages.map(message => {
       if(message.id === id){
-        message.read = !message.read
+        message.read = true
       }
       return message
     })
