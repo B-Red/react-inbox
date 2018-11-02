@@ -20,6 +20,10 @@ class App extends Component {
     })
   }
 
+  markAsReadButtonClicked = () => {
+    console.log('readbuttonclicked')
+  }
+
   messageRead = async (id) => {
     console.log('read this message!', id)
     let message = {
@@ -49,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-      <Toolbar />
+      <Toolbar readClicked={this.markAsReadButtonClicked}  />
       <MessageList messages={this.state.messages} messageRead={this.messageRead}/>
 
       </div>
